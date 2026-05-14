@@ -1,0 +1,26 @@
+{
+  "train_batch_size": 8,
+  "train_micro_batch_size_per_gpu": 4,
+  "gradient_accumulation_steps": 1,
+  "optimizer": {
+    "type": "AdamW",
+    "params": {
+      "lr": 3e-5,
+      "betas": [0.9, 0.999],
+      "eps": 1e-8,
+      "weight_decay": 0.01
+    }
+  },
+  "zero_optimization": {
+    "stage": 1,
+    "offload_optimizer": { "device": "none" },
+    "overlap_comm": true,
+    "contiguous_gradients": true,
+    "reduce_bucket_size": 50000000
+  },
+  "fp16": {
+    "enabled": true
+  },
+  "gradient_clipping": 1.0,
+  "zero_allow_untested_optimizer": true
+}
